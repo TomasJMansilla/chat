@@ -233,6 +233,8 @@ Private Sub cmb_fondo_Click()
     ElseIf (cmb_fondo.Text = "Verde") Then
         txt_log.BackColor = vbGreen
     End If
+    
+    Beep
 End Sub
 
 Private Sub cmb_letra_Click()
