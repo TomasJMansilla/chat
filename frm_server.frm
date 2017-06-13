@@ -195,8 +195,6 @@ Private Sub cmd_iniciar_Click()
 End Sub
 
 Private Sub cmd_send_Click()
-    If (txt_mensaje.Text = "") Then
-        msgbo "Escribe "
     Winsock.SendData txt_name & "(" & Time & "): " & txt_mensaje.Text
     txt_log.Text = txt_log.Text & vbCrLf & txt_name & "(" & Time & "): " & txt_mensaje.Text
     txt_mensaje.Text = ""
