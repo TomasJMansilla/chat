@@ -170,6 +170,13 @@ Private Sub cmb_fondo_Click()
     End If
 End Sub
 
+Private Sub txt_name_LostFocus()
+    If (txt_name.Text <> "") Then
+        txt_name.BackColor = vbWhite
+        txt_mensaje.SetFocus
+    End If
+End Sub
+
 Private Sub cmb_letra_Click()
      If (cmb_letra.Text = "Amarillo") Then
         txt_log.ForeColor = vbYellow
@@ -196,6 +203,8 @@ End Sub
 
 Private Sub cmd_send_Click()
     If (txt_name.Text = "") Then
+        txt_name.BackColor = vbRed
+        txt_name.SetFocus
         txt_mensaje.Text = ""
         MsgBox "Ingresa un nombre primero", vbInformation
     Else

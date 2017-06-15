@@ -262,6 +262,8 @@ End Sub
 
 Private Sub cmd_send_Click()
     If (txt_name.Text = "") Then
+        txt_name.BackColor = vbRed
+        txt_name.SetFocus
         txt_mensaje.Text = ""
         MsgBox "Ingresa un nombre primero", vbInformation
     Else
@@ -276,6 +278,13 @@ End Sub
 Private Sub txt_mensaje_KeyPress(KeyAscii As Integer)
     If (KeyAscii = 13) Then
         cmd_send_Click
+    End If
+End Sub
+
+Private Sub txt_name_LostFocus()
+    If (txt_name.Text <> "") Then
+        txt_name.BackColor = vbWhite
+        txt_mensaje.SetFocus
     End If
 End Sub
 
