@@ -27,14 +27,14 @@ Begin VB.Form frm_server
    Begin VB.ComboBox cmb_fondo 
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   9.75
+         Size            =   8.25
          Charset         =   0
-         Weight          =   400
+         Weight          =   700
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   360
+      Height          =   315
       ItemData        =   "frm_server.frx":0000
       Left            =   120
       List            =   "frm_server.frx":0019
@@ -46,14 +46,14 @@ Begin VB.Form frm_server
    Begin VB.ComboBox cmb_letra 
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   9.75
+         Size            =   8.25
          Charset         =   0
-         Weight          =   400
+         Weight          =   700
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   360
+      Height          =   315
       ItemData        =   "frm_server.frx":0050
       Left            =   1800
       List            =   "frm_server.frx":0069
