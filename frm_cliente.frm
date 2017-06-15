@@ -3,10 +3,10 @@ Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "MSWINSCK.OCX"
 Begin VB.Form frm_cliente 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "CHAT Cliente"
-   ClientHeight    =   6435
+   ClientHeight    =   6270
    ClientLeft      =   45
    ClientTop       =   375
-   ClientWidth     =   6135
+   ClientWidth     =   7545
    BeginProperty Font 
       Name            =   "MS Sans Serif"
       Size            =   12
@@ -21,8 +21,8 @@ Begin VB.Form frm_cliente
    MaxButton       =   0   'False
    MDIChild        =   -1  'True
    MinButton       =   0   'False
-   ScaleHeight     =   6435
-   ScaleWidth      =   6135
+   ScaleHeight     =   6270
+   ScaleWidth      =   7545
    ShowInTaskbar   =   0   'False
    Begin VB.ComboBox cmb_letra 
       BeginProperty Font 
@@ -36,12 +36,12 @@ Begin VB.Form frm_cliente
       EndProperty
       Height          =   360
       ItemData        =   "frm_cliente.frx":0000
-      Left            =   1680
+      Left            =   1800
       List            =   "frm_cliente.frx":0019
       TabIndex        =   9
       Text            =   "Color Letra"
-      Top             =   4920
-      Width           =   1455
+      Top             =   4680
+      Width           =   1575
    End
    Begin VB.ComboBox cmb_fondo 
       BeginProperty Font 
@@ -59,28 +59,28 @@ Begin VB.Form frm_cliente
       List            =   "frm_cliente.frx":0069
       TabIndex        =   8
       Text            =   "Fondo"
-      Top             =   4920
-      Width           =   1455
+      Top             =   4680
+      Width           =   1575
    End
    Begin VB.TextBox txt_name 
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   12
+         Size            =   8.25
          Charset         =   0
-         Weight          =   400
+         Weight          =   700
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   420
-      Left            =   960
+      Height          =   315
+      Left            =   1320
       TabIndex        =   7
       Top             =   120
-      Width           =   1575
+      Width           =   1455
    End
    Begin MSWinsockLib.Winsock Winsock 
-      Left            =   5160
-      Top             =   5760
+      Left            =   6720
+      Top             =   5520
       _ExtentX        =   741
       _ExtentY        =   741
       _Version        =   393216
@@ -97,9 +97,9 @@ Begin VB.Form frm_cliente
          Strikethrough   =   0   'False
       EndProperty
       Height          =   375
-      Left            =   4680
+      Left            =   6000
       TabIndex        =   5
-      Top             =   4920
+      Top             =   4680
       Width           =   1335
    End
    Begin VB.TextBox txt_mensaje 
@@ -115,8 +115,8 @@ Begin VB.Form frm_cliente
       Height          =   975
       Left            =   120
       TabIndex        =   4
-      Top             =   5400
-      Width           =   4455
+      Top             =   5160
+      Width           =   5655
    End
    Begin VB.TextBox txt_IP 
       Alignment       =   2  'Center
@@ -124,13 +124,13 @@ Begin VB.Form frm_cliente
          Name            =   "MS Sans Serif"
          Size            =   8.25
          Charset         =   0
-         Weight          =   400
+         Weight          =   700
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   405
-      Left            =   3960
+      Height          =   285
+      Left            =   5280
       TabIndex        =   2
       Text            =   "127.0.0.1"
       Top             =   120
@@ -148,10 +148,10 @@ Begin VB.Form frm_cliente
          Strikethrough   =   0   'False
       EndProperty
       Height          =   375
-      Left            =   4680
+      Left            =   5880
       TabIndex        =   1
-      Top             =   720
-      Width           =   1335
+      Top             =   480
+      Width           =   1455
    End
    Begin VB.TextBox txt_log 
       BeginProperty Font 
@@ -170,8 +170,8 @@ Begin VB.Form frm_cliente
       MultiLine       =   -1  'True
       ScrollBars      =   3  'Both
       TabIndex        =   0
-      Top             =   1200
-      Width           =   5895
+      Top             =   960
+      Width           =   7215
    End
    Begin VB.Label Label2 
       AutoSize        =   -1  'True
@@ -187,9 +187,9 @@ Begin VB.Form frm_cliente
          Strikethrough   =   0   'False
       EndProperty
       Height          =   240
-      Left            =   0
+      Left            =   240
       TabIndex        =   6
-      Top             =   240
+      Top             =   120
       Width           =   900
    End
    Begin VB.Label Label1 
@@ -206,9 +206,9 @@ Begin VB.Form frm_cliente
          Strikethrough   =   0   'False
       EndProperty
       Height          =   195
-      Left            =   2640
+      Left            =   3720
       TabIndex        =   3
-      Top             =   240
+      Top             =   120
       Width           =   1275
    End
 End
@@ -261,11 +261,16 @@ Private Sub cmd_conectar_Click()
 End Sub
 
 Private Sub cmd_send_Click()
-    Winsock.SendData txt_name & "(" & Time & "): " & txt_mensaje.Text
-    txt_log.Text = txt_log.Text & vbCrLf & txt_name & "(" & Time & "): " & txt_mensaje.Text
-    txt_mensaje.Text = ""
-    txt_mensaje.SetFocus
-    txt_log.SelStart = Len(txt_log)
+    If (txt_name.Text = "") Then
+        txt_mensaje.Text = ""
+        MsgBox "Ingresa un nombre primero", vbInformation
+    Else
+        Winsock.SendData txt_name & "(" & Time & "): " & txt_mensaje.Text
+        txt_log.Text = txt_log.Text & vbCrLf & txt_name & "(" & Time & "): " & txt_mensaje.Text
+        txt_mensaje.Text = ""
+        txt_mensaje.SetFocus
+        txt_log.SelStart = Len(txt_log)
+    End If
 End Sub
 
 Private Sub txt_mensaje_KeyPress(KeyAscii As Integer)

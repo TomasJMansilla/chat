@@ -65,7 +65,7 @@ Begin VB.Form frm_server
       Height          =   285
       Left            =   2760
       TabIndex        =   5
-      Top             =   240
+      Top             =   120
       Width           =   1935
    End
    Begin MSWinsockLib.Winsock Winsock 
@@ -143,7 +143,7 @@ Begin VB.Form frm_server
       Height          =   195
       Left            =   1800
       TabIndex        =   4
-      Top             =   240
+      Top             =   120
       Width           =   720
    End
 End
@@ -195,12 +195,16 @@ Private Sub cmd_iniciar_Click()
 End Sub
 
 Private Sub cmd_send_Click()
-    Winsock.SendData txt_name & "(" & Time & "): " & txt_mensaje.Text
-    txt_log.Text = txt_log.Text & vbCrLf & txt_name & "(" & Time & "): " & txt_mensaje.Text
-    txt_mensaje.Text = ""
-    txt_mensaje.SetFocus
-    txt_log.SelStart = Len(txt_log)
-    
+    If (txt_name.Text = "") Then
+        txt_mensaje.Text = ""
+        MsgBox "Ingresa un nombre primero", vbInformation
+    Else
+        Winsock.SendData txt_name & "(" & Time & "): " & txt_mensaje.Text
+        txt_log.Text = txt_log.Text & vbCrLf & txt_name & "(" & Time & "): " & txt_mensaje.Text
+        txt_mensaje.Text = ""
+        txt_mensaje.SetFocus
+        txt_log.SelStart = Len(txt_log)
+    End If
 End Sub
 
 Private Sub Winsock_ConnectionRequest(ByVal requestID As Long)
