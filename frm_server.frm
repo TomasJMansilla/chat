@@ -63,11 +63,11 @@ Begin VB.Form frm_server
       Width           =   1575
    End
    Begin VB.TextBox txt_name 
-      Height          =   285
-      Left            =   960
+      Height          =   315
+      Left            =   1200
       TabIndex        =   5
-      Top             =   360
-      Width           =   1935
+      Top             =   120
+      Width           =   1815
    End
    Begin MSWinsockLib.Winsock Winsock 
       Left            =   5400
@@ -114,7 +114,7 @@ Begin VB.Form frm_server
       Height          =   375
       Left            =   6120
       TabIndex        =   1
-      Top             =   240
+      Top             =   120
       Width           =   1215
    End
    Begin VB.TextBox txt_log 
@@ -141,11 +141,20 @@ Begin VB.Form frm_server
       AutoSize        =   -1  'True
       BackStyle       =   0  'Transparent
       Caption         =   "Nombre:"
-      Height          =   195
-      Left            =   120
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   240
+      Left            =   240
       TabIndex        =   4
-      Top             =   360
-      Width           =   720
+      Top             =   120
+      Width           =   900
    End
 End
 Attribute VB_Name = "frm_server"

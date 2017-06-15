@@ -73,10 +73,10 @@ Begin VB.Form frm_cliente
          Strikethrough   =   0   'False
       EndProperty
       Height          =   315
-      Left            =   1320
+      Left            =   1200
       TabIndex        =   7
       Top             =   120
-      Width           =   1455
+      Width           =   1815
    End
    Begin MSWinsockLib.Winsock Winsock 
       Left            =   4800
