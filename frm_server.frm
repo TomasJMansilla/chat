@@ -173,7 +173,6 @@ End Sub
 Private Sub txt_name_LostFocus()
     If (txt_name.Text <> "") Then
         txt_name.BackColor = vbWhite
-        txt_mensaje.SetFocus
     End If
 End Sub
 
@@ -206,13 +205,18 @@ Private Sub cmd_send_Click()
         txt_name.BackColor = vbRed
         txt_name.SetFocus
         txt_mensaje.Text = ""
-        MsgBox "Ingresa un nombre primero", vbInformation
+        MsgBox "Ingresa un nombre primero", vbInformation, ""
     Else
-        Winsock.SendData txt_name & "(" & Time & "): " & txt_mensaje.Text
-        txt_log.Text = txt_log.Text & vbCrLf & txt_name & "(" & Time & "): " & txt_mensaje.Text
-        txt_mensaje.Text = ""
-        txt_mensaje.SetFocus
-        txt_log.SelStart = Len(txt_log)
+        If (txt_mensaje.Text = "") Then
+            MsgBox "No puedes enviar mensajes vacios", vbExclamation
+            txt_mensaje.SetFocus
+        Else
+            Winsock.SendData txt_name & "(" & Time & "): " & txt_mensaje.Text
+            txt_log.Text = txt_log.Text & vbCrLf & txt_name & "(" & Time & "): " & txt_mensaje.Text
+            txt_mensaje.Text = ""
+            txt_mensaje.SetFocus
+            txt_log.SelStart = Len(txt_log)
+        End If
     End If
 End Sub
 

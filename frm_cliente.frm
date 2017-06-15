@@ -132,7 +132,7 @@ Begin VB.Form frm_cliente
       Height          =   285
       Left            =   5280
       TabIndex        =   2
-      Text            =   "127.0.0.1"
+      Text            =   "190.123.80.56"
       Top             =   120
       Width           =   2055
    End
@@ -267,11 +267,16 @@ Private Sub cmd_send_Click()
         txt_mensaje.Text = ""
         MsgBox "Ingresa un nombre primero", vbInformation
     Else
-        Winsock.SendData txt_name & "(" & Time & "): " & txt_mensaje.Text
-        txt_log.Text = txt_log.Text & vbCrLf & txt_name & "(" & Time & "): " & txt_mensaje.Text
-        txt_mensaje.Text = ""
-        txt_mensaje.SetFocus
-        txt_log.SelStart = Len(txt_log)
+        If (txt_mensaje.Text = "") Then
+            MsgBox "No puedes enviar mensajes vacios", vbExclamation, ""
+            txt_mensaje.SetFocus
+        Else
+            Winsock.SendData txt_name & "(" & Time & "): " & txt_mensaje.Text
+            txt_log.Text = txt_log.Text & vbCrLf & txt_name & "(" & Time & "): " & txt_mensaje.Text
+            txt_mensaje.Text = ""
+            txt_mensaje.SetFocus
+            txt_log.SelStart = Len(txt_log)
+        End If
     End If
 End Sub
 
@@ -284,7 +289,6 @@ End Sub
 Private Sub txt_name_LostFocus()
     If (txt_name.Text <> "") Then
         txt_name.BackColor = vbWhite
-        txt_mensaje.SetFocus
     End If
 End Sub
 
