@@ -79,8 +79,8 @@ Begin VB.Form frm_cliente
       Width           =   1455
    End
    Begin MSWinsockLib.Winsock Winsock 
-      Left            =   6720
-      Top             =   5520
+      Left            =   4800
+      Top             =   4680
       _ExtentX        =   741
       _ExtentY        =   741
       _Version        =   393216
@@ -99,7 +99,7 @@ Begin VB.Form frm_cliente
       Height          =   375
       Left            =   6000
       TabIndex        =   5
-      Top             =   4680
+      Top             =   5400
       Width           =   1335
    End
    Begin VB.TextBox txt_mensaje 

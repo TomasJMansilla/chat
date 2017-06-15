@@ -3,10 +3,10 @@ Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "MSWINSCK.OCX"
 Begin VB.Form frm_server 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "CHAT Servidor"
-   ClientHeight    =   6240
+   ClientHeight    =   6270
    ClientLeft      =   45
    ClientTop       =   375
-   ClientWidth     =   6855
+   ClientWidth     =   7545
    BeginProperty Font 
       Name            =   "MS Sans Serif"
       Size            =   8.25
@@ -20,8 +20,9 @@ Begin VB.Form frm_server
    MaxButton       =   0   'False
    MDIChild        =   -1  'True
    MinButton       =   0   'False
-   ScaleHeight     =   6240
-   ScaleWidth      =   6855
+   ScaleHeight     =   6270
+   ScaleMode       =   0  'User
+   ScaleWidth      =   7545
    ShowInTaskbar   =   0   'False
    Begin VB.ComboBox cmb_fondo 
       BeginProperty Font 
@@ -39,8 +40,8 @@ Begin VB.Form frm_server
       List            =   "frm_server.frx":0019
       TabIndex        =   7
       Text            =   "Fondo"
-      Top             =   4560
-      Width           =   1455
+      Top             =   4680
+      Width           =   1575
    End
    Begin VB.ComboBox cmb_letra 
       BeginProperty Font 
@@ -54,18 +55,18 @@ Begin VB.Form frm_server
       EndProperty
       Height          =   360
       ItemData        =   "frm_server.frx":0050
-      Left            =   1680
+      Left            =   1800
       List            =   "frm_server.frx":0069
       TabIndex        =   6
       Text            =   "Color Letra"
-      Top             =   4560
-      Width           =   1455
+      Top             =   4680
+      Width           =   1575
    End
    Begin VB.TextBox txt_name 
       Height          =   285
-      Left            =   2760
+      Left            =   960
       TabIndex        =   5
-      Top             =   120
+      Top             =   360
       Width           =   1935
    End
    Begin MSWinsockLib.Winsock Winsock 
@@ -87,10 +88,10 @@ Begin VB.Form frm_server
          Strikethrough   =   0   'False
       EndProperty
       Height          =   375
-      Left            =   5520
+      Left            =   6000
       TabIndex        =   3
-      Top             =   4560
-      Width           =   1215
+      Top             =   5400
+      Width           =   1335
    End
    Begin VB.TextBox txt_mensaje 
       BeginProperty Font 
@@ -102,18 +103,18 @@ Begin VB.Form frm_server
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   1095
+      Height          =   975
       Left            =   120
       TabIndex        =   2
-      Top             =   5040
-      Width           =   5175
+      Top             =   5160
+      Width           =   5655
    End
    Begin VB.CommandButton cmd_iniciar 
       Caption         =   "Iniciar"
       Height          =   375
-      Left            =   5520
+      Left            =   6120
       TabIndex        =   1
-      Top             =   120
+      Top             =   240
       Width           =   1215
    End
    Begin VB.TextBox txt_log 
@@ -127,23 +128,23 @@ Begin VB.Form frm_server
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H00000000&
-      Height          =   3855
+      Height          =   3615
       Left            =   120
       Locked          =   -1  'True
       MultiLine       =   -1  'True
       ScrollBars      =   3  'Both
       TabIndex        =   0
-      Top             =   600
-      Width           =   6735
+      Top             =   960
+      Width           =   7215
    End
    Begin VB.Label Label1 
       AutoSize        =   -1  'True
       BackStyle       =   0  'Transparent
       Caption         =   "Nombre:"
       Height          =   195
-      Left            =   1800
+      Left            =   120
       TabIndex        =   4
-      Top             =   120
+      Top             =   360
       Width           =   720
    End
 End
