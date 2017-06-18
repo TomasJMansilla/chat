@@ -300,7 +300,7 @@ Private Sub Winsock_DataArrival(ByVal bytesTotal As Long)
 End Sub
 
 Private Sub winsock_Connect()
-txt_log = "Conectado a " & Winsock.RemoteHostIP & vbCrLf
+    txt_log.Text = "Conectado a " & Winsock.RemoteHostIP & vbCrLf
 End Sub
 Private Sub winsock_Close()
     Winsock.Close  'Cierra la conexión

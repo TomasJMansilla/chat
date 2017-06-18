@@ -25,15 +25,6 @@ Begin VB.Form frm_server
    ScaleWidth      =   7545
    ShowInTaskbar   =   0   'False
    Begin VB.ComboBox cmb_fondo 
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
       Height          =   315
       ItemData        =   "frm_server.frx":0000
       Left            =   120
@@ -44,15 +35,6 @@ Begin VB.Form frm_server
       Width           =   1575
    End
    Begin VB.ComboBox cmb_letra 
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
       Height          =   315
       ItemData        =   "frm_server.frx":0050
       Left            =   1800
@@ -70,8 +52,8 @@ Begin VB.Form frm_server
       Width           =   1815
    End
    Begin MSWinsockLib.Winsock Winsock 
-      Left            =   5400
-      Top             =   5400
+      Left            =   6120
+      Top             =   4920
       _ExtentX        =   741
       _ExtentY        =   741
       _Version        =   393216
