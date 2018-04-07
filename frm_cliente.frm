@@ -34,6 +34,7 @@ Begin VB.Form frm_cliente
       _ExtentX        =   12726
       _ExtentY        =   6376
       _Version        =   393217
+      Enabled         =   -1  'True
       TextRTF         =   $"frm_cliente.frx":0000
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
@@ -153,7 +154,7 @@ Begin VB.Form frm_cliente
       Height          =   285
       Left            =   5280
       TabIndex        =   1
-      Text            =   "190.123.80.56"
+      Text            =   "127.0.0.1"
       Top             =   120
       Width           =   2055
    End
@@ -233,6 +234,24 @@ Private Sub cmb_fondo_Click()
         txt_log.BackColor = &HFF80FF
     ElseIf (cmb_fondo.Text = "Verde") Then
         txt_log.BackColor = vbGreen
+    End If
+End Sub
+
+Private Sub cmb_letra_Click()
+    If (cmb_fondo.Text = "Amarillo") Then
+        txt_log.ForeColor = vbYellow
+    ElseIf (cmb_fondo.Text = "Azul") Then
+        txt_log.ForeColor = vbBlue
+    ElseIf (cmb_fondo.Text = "Celeste") Then
+        txt_log.ForeColor = &HFFFF00
+    ElseIf (cmb_fondo.Text = "Rojo") Then
+        txt_log.ForeColor = vbRed
+    ElseIf (cmb_fondo.Text = "Negro") Then
+        txt_log.ForeColor = vbBlack
+    ElseIf (cmb_fondo.Text = "Rosa") Then
+        txt_log.ForeColor = &HFF80FF
+    ElseIf (cmb_fondo.Text = "Verde") Then
+        txt_log.ForeColor = vbGreen
     End If
 End Sub
 

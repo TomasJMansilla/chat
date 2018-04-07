@@ -26,24 +26,16 @@ Begin VB.Form frm_server
    ScaleWidth      =   7545
    ShowInTaskbar   =   0   'False
    Begin RichTextLib.RichTextBox txt_log 
-      Height          =   3855
+      Height          =   3975
       Left            =   120
       TabIndex        =   7
-      Top             =   720
+      Top             =   600
       Width           =   7215
       _ExtentX        =   12726
-      _ExtentY        =   6800
+      _ExtentY        =   7011
       _Version        =   393217
+      Enabled         =   -1  'True
       TextRTF         =   $"frm_server.frx":0000
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "MS Sans Serif"
-         Size            =   9.75
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
    End
    Begin VB.ComboBox cmb_fondo 
       Height          =   315
@@ -74,7 +66,7 @@ Begin VB.Form frm_server
    End
    Begin MSWinsockLib.Winsock Winsock 
       Left            =   6120
-      Top             =   4920
+      Top             =   4680
       _ExtentX        =   741
       _ExtentY        =   741
       _Version        =   393216
@@ -145,6 +137,24 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Private Sub cmb_letra_Click()
+    If (cmb_fondo.Text = "Amarillo") Then
+        txt_log.ForeColor = vbYellow
+    ElseIf (cmb_fondo.Text = "Azul") Then
+        txt_log.ForeColor = vbBlue
+    ElseIf (cmb_fondo.Text = "Celeste") Then
+        txt_log.ForeColor = &HFFFF00
+    ElseIf (cmb_fondo.Text = "Rojo") Then
+        txt_log.ForeColor = vbRed
+    ElseIf (cmb_fondo.Text = "Negro") Then
+        txt_log.ForeColor = vbBlack
+    ElseIf (cmb_fondo.Text = "Rosa") Then
+        txt_log.ForeColor = &HFF80FF
+    ElseIf (cmb_fondo.Text = "Verde") Then
+        txt_log.ForeColor = vbGreen
+    End If
+End Sub
+
 Private Sub cmb_fondo_Click()
     If (cmb_fondo.Text = "Amarillo") Then
         txt_log.BackColor = vbYellow
