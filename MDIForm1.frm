@@ -15,6 +15,9 @@ Begin VB.MDIForm MDIForm1
    Begin VB.Menu servidor 
       Caption         =   "Servidor"
    End
+   Begin VB.Menu conf 
+      Caption         =   "Configuración"
+   End
 End
 Attribute VB_Name = "MDIForm1"
 Attribute VB_GlobalNameSpace = False
@@ -23,6 +26,10 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Private Sub cliente_Click()
     frm_cliente.Show
+End Sub
+
+Private Sub conf_Click()
+    frm_conf.Show
 End Sub
 
 Private Sub servidor_Click()

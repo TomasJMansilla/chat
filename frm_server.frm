@@ -25,37 +25,37 @@ Begin VB.Form frm_server
    ScaleMode       =   0  'User
    ScaleWidth      =   7545
    ShowInTaskbar   =   0   'False
+   Begin VB.ComboBox cmb_fondo 
+      Height          =   315
+      ItemData        =   "frm_server.frx":0000
+      Left            =   120
+      List            =   "frm_server.frx":0019
+      TabIndex        =   6
+      Text            =   "Fondo"
+      Top             =   4680
+      Width           =   1455
+   End
    Begin RichTextLib.RichTextBox txt_log 
       Height          =   3975
       Left            =   120
-      TabIndex        =   7
+      TabIndex        =   5
       Top             =   600
       Width           =   7215
       _ExtentX        =   12726
       _ExtentY        =   7011
       _Version        =   393217
       Enabled         =   -1  'True
-      TextRTF         =   $"frm_server.frx":0000
-   End
-   Begin VB.ComboBox cmb_fondo 
-      Height          =   315
-      ItemData        =   "frm_server.frx":0085
-      Left            =   120
-      List            =   "frm_server.frx":009E
-      TabIndex        =   6
-      Text            =   "Fondo"
-      Top             =   4680
-      Width           =   1575
-   End
-   Begin VB.ComboBox cmb_letra 
-      Height          =   315
-      ItemData        =   "frm_server.frx":00D5
-      Left            =   1800
-      List            =   "frm_server.frx":00EE
-      TabIndex        =   5
-      Text            =   "Color Letra"
-      Top             =   4680
-      Width           =   1575
+      ScrollBars      =   3
+      TextRTF         =   $"frm_server.frx":0050
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
    End
    Begin VB.TextBox txt_name 
       Height          =   315
@@ -100,6 +100,7 @@ Begin VB.Form frm_server
       EndProperty
       Height          =   975
       Left            =   120
+      ScrollBars      =   3  'Both
       TabIndex        =   1
       Top             =   5160
       Width           =   5655
@@ -162,10 +163,6 @@ Private Sub cmb_fondo_Click()
         txt_log.BackColor = vbBlue
     ElseIf (cmb_fondo.Text = "Celeste") Then
         txt_log.BackColor = &HFFFF00
-    ElseIf (cmb_fondo.Text = "Rojo") Then
-        txt_log.BackColor = vbRed
-    ElseIf (cmb_fondo.Text = "Negro") Then
-        txt_log.BackColor = vbBlack
     ElseIf (cmb_fondo.Text = "Rosa") Then
         txt_log.BackColor = &HFF80FF
     ElseIf (cmb_fondo.Text = "Verde") Then
