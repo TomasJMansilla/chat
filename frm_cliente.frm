@@ -38,7 +38,7 @@ Begin VB.Form frm_cliente
       Height          =   315
       ItemData        =   "frm_cliente.frx":0000
       Left            =   120
-      List            =   "frm_cliente.frx":0019
+      List            =   "frm_cliente.frx":0010
       TabIndex        =   8
       Text            =   "Fondo"
       Top             =   4680
@@ -54,7 +54,7 @@ Begin VB.Form frm_cliente
       _ExtentY        =   6376
       _Version        =   393217
       ScrollBars      =   3
-      TextRTF         =   $"frm_cliente.frx":0050
+      TextRTF         =   $"frm_cliente.frx":0034
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
          Size            =   8.25
@@ -204,8 +204,6 @@ Attribute VB_Exposed = False
 Private Sub cmb_fondo_Click()
     If (cmb_fondo.Text = "Amarillo") Then
         txt_log.BackColor = vbYellow
-    ElseIf (cmb_fondo.Text = "Azul") Then
-        txt_log.BackColor = vbBlue
     ElseIf (cmb_fondo.Text = "Celeste") Then
         txt_log.BackColor = &HFFFF00
     ElseIf (cmb_fondo.Text = "Rosa") Then

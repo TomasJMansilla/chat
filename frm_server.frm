@@ -29,7 +29,7 @@ Begin VB.Form frm_server
       Height          =   315
       ItemData        =   "frm_server.frx":0000
       Left            =   120
-      List            =   "frm_server.frx":0019
+      List            =   "frm_server.frx":0010
       TabIndex        =   6
       Text            =   "Fondo"
       Top             =   4680
@@ -44,8 +44,9 @@ Begin VB.Form frm_server
       _ExtentX        =   12726
       _ExtentY        =   7011
       _Version        =   393217
+      Enabled         =   -1  'True
       ScrollBars      =   3
-      TextRTF         =   $"frm_server.frx":0050
+      TextRTF         =   $"frm_server.frx":0034
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
          Size            =   8.25
@@ -140,8 +141,6 @@ Attribute VB_Exposed = False
 Private Sub cmb_fondo_Click()
     If (cmb_fondo.Text = "Amarillo") Then
         txt_log.BackColor = vbYellow
-    ElseIf (cmb_fondo.Text = "Azul") Then
-        txt_log.BackColor = vbBlue
     ElseIf (cmb_fondo.Text = "Celeste") Then
         txt_log.BackColor = &HFFFF00
     ElseIf (cmb_fondo.Text = "Rosa") Then
@@ -161,6 +160,7 @@ Private Sub cmd_iniciar_Click()
     Winsock.Close
     Winsock.LocalPort = 60000
     Winsock.Listen
+    txt_log.SelText = txt_log.SelText & "Servidor iniciado" & vbCrLf
 End Sub
 
 Private Sub cmd_send_Click()
