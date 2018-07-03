@@ -25,7 +25,8 @@ Begin VB.Form frm_cliente
    ScaleHeight     =   6270
    ScaleWidth      =   7545
    ShowInTaskbar   =   0   'False
-   Begin VB.ComboBox cmb_fondo 
+   Begin VB.CommandButton cmd_desconectar 
+      Caption         =   "Desconectar"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
@@ -35,14 +36,11 @@ Begin VB.Form frm_cliente
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   315
-      ItemData        =   "frm_cliente.frx":0000
-      Left            =   120
-      List            =   "frm_cliente.frx":0010
+      Height          =   375
+      Left            =   4200
       TabIndex        =   8
-      Text            =   "Fondo"
-      Top             =   4680
-      Width           =   1575
+      Top             =   480
+      Width           =   1455
    End
    Begin RichTextLib.RichTextBox txt_log 
       Height          =   3615
@@ -53,8 +51,9 @@ Begin VB.Form frm_cliente
       _ExtentX        =   12726
       _ExtentY        =   6376
       _Version        =   393217
+      Enabled         =   -1  'True
       ScrollBars      =   3
-      TextRTF         =   $"frm_cliente.frx":0034
+      TextRTF         =   $"frm_cliente.frx":0000
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
          Size            =   8.25
@@ -201,23 +200,18 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Private Sub cmb_fondo_Click()
-    If (cmb_fondo.Text = "Amarillo") Then
-        txt_log.BackColor = vbYellow
-    ElseIf (cmb_fondo.Text = "Celeste") Then
-        txt_log.BackColor = &HFFFF00
-    ElseIf (cmb_fondo.Text = "Rosa") Then
-        txt_log.BackColor = &HFF80FF
-    ElseIf (cmb_fondo.Text = "Verde") Then
-        txt_log.BackColor = vbGreen
-    End If
-End Sub
-
 Private Sub cmd_conectar_Click()
     Winsock.Close
     Winsock.RemoteHost = txt_IP.Text
     Winsock.RemotePort = 60000
     Winsock.Connect
+    cmd_conectar.Caption = "Reconectar"
+    txt_log.SelText = ""
+End Sub
+
+Private Sub cmd_desconectar_Click()
+    Winsock.Close
+    cmd_conectar.Caption = "Conectar"
 End Sub
 
 Private Sub cmd_send_Click()
@@ -263,6 +257,7 @@ End Sub
 
 Private Sub winsock_Connect()
     txt_log.SelText = "Conectado a " & Winsock.RemoteHostIP & vbCrLf
+    txt_log.SelText = ""
 End Sub
 Private Sub winsock_Close()
     Winsock.Close  'Cierra la conexión

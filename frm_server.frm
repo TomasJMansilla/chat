@@ -25,15 +25,21 @@ Begin VB.Form frm_server
    ScaleMode       =   0  'User
    ScaleWidth      =   7545
    ShowInTaskbar   =   0   'False
-   Begin VB.ComboBox cmb_fondo 
-      Height          =   315
-      ItemData        =   "frm_server.frx":0000
-      Left            =   120
-      List            =   "frm_server.frx":0010
-      TabIndex        =   6
-      Text            =   "Fondo"
-      Top             =   4680
-      Width           =   1455
+   Begin VB.CommandButton cmd_reiniciar 
+      Caption         =   "Reiniciar"
+      Height          =   375
+      Left            =   3240
+      TabIndex        =   8
+      Top             =   120
+      Width           =   1215
+   End
+   Begin VB.CommandButton cmd_apagar 
+      Caption         =   "Apagar"
+      Height          =   375
+      Left            =   4680
+      TabIndex        =   7
+      Top             =   120
+      Width           =   1215
    End
    Begin RichTextLib.RichTextBox txt_log 
       Height          =   3975
@@ -46,7 +52,7 @@ Begin VB.Form frm_server
       _Version        =   393217
       Enabled         =   -1  'True
       ScrollBars      =   3
-      TextRTF         =   $"frm_server.frx":0034
+      TextRTF         =   $"frm_server.frx":0000
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
          Size            =   8.25
@@ -113,6 +119,14 @@ Begin VB.Form frm_server
       Top             =   120
       Width           =   1215
    End
+   Begin VB.Label lbl_estado 
+      Caption         =   "Label2"
+      Height          =   495
+      Left            =   1800
+      TabIndex        =   6
+      Top             =   4680
+      Width           =   1935
+   End
    Begin VB.Label Label1 
       AutoSize        =   -1  'True
       BackStyle       =   0  'Transparent
@@ -138,16 +152,33 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Private Sub cmb_fondo_Click()
-    If (cmb_fondo.Text = "Amarillo") Then
-        txt_log.BackColor = vbYellow
-    ElseIf (cmb_fondo.Text = "Celeste") Then
-        txt_log.BackColor = &HFFFF00
-    ElseIf (cmb_fondo.Text = "Rosa") Then
-        txt_log.BackColor = &HFF80FF
-    ElseIf (cmb_fondo.Text = "Verde") Then
-        txt_log.BackColor = vbGreen
+Private Sub cmd_apagar_Click()
+    Winsock.Close
+    txt_log.Text = txt_log.Text & vbCrLf & "El cliente se desconecto" & vbCrLf
+    If (txt_log.Text <> "") Then
+        txt_log.Text = ""
+        txt_log.Text = "Servidor apagado"
+    Else
+        
     End If
+    lbl_estado.Caption = Winsock.State
+End Sub
+
+Private Sub cmd_reiniciar_Click()
+    Winsock.Close
+    Winsock.LocalPort = 60000
+    Winsock.Listen
+    If (txt_log.Text <> "") Then
+        txt_log.Text = ""
+        txt_log.Text = "Servidor reiniciado" & vbCrLf
+    Else
+        
+    End If
+    lbl_estado.Caption = Winsock.State
+End Sub
+
+Private Sub Form_Load()
+    lbl_estado.Caption = Winsock.State
 End Sub
 
 Private Sub txt_name_LostFocus()
@@ -160,7 +191,12 @@ Private Sub cmd_iniciar_Click()
     Winsock.Close
     Winsock.LocalPort = 60000
     Winsock.Listen
-    txt_log.SelText = txt_log.SelText & "Servidor iniciado" & vbCrLf
+    If (txt_log.SelText = "") Then
+        txt_log.SelText = "Servidor inciado" & vbCrLf
+    Else
+        
+    End If
+    lbl_estado.Caption = Winsock.State
 End Sub
 
 Private Sub cmd_send_Click()
@@ -174,12 +210,12 @@ Private Sub cmd_send_Click()
             MsgBox "No puedes enviar mensajes vacios", vbExclamation
             txt_mensaje.SetFocus
         Else
-            txt_log.SelColor = vbBlue
-            Winsock.SendData txt_name & "(" & Time & "): " & txt_mensaje.Text
-            txt_log.SelText = txt_log.SelText & vbCrLf & txt_name & "(" & Time & "): " & txt_mensaje.Text
-            txt_mensaje.Text = ""
-            txt_mensaje.SetFocus
-            txt_log.SelStart = Len(txt_log)
+                txt_log.SelColor = vbBlue
+                Winsock.SendData txt_name & "(" & Time & "): " & txt_mensaje.Text
+                txt_log.SelText = txt_log.SelText & vbCrLf & txt_name & "(" & Time & "): " & txt_mensaje.Text
+                txt_mensaje.Text = ""
+                txt_mensaje.SetFocus
+                txt_log.SelStart = Len(txt_log)
         End If
     End If
 End Sub
@@ -188,6 +224,7 @@ Private Sub Winsock_ConnectionRequest(ByVal requestID As Long)
     Winsock.Close
     Winsock.Accept requestID
     txt_log.SelText = "Cliente conectado. IP : " & Winsock.RemoteHostIP & vbCrLf
+    lbl_estado.Caption = Winsock.State
 End Sub
 
 Private Sub Winsock_DataArrival(ByVal bytesTotal As Long)
@@ -207,5 +244,8 @@ End Sub
 Private Sub winsock_Close()
     Winsock.Close
     txt_log.Text = txt_log.Text & vbCrLf & "El cliente se desconecto" & vbCrLf
+    txt_log.SelText = ""
+    cmd_iniciar_Click
 End Sub
+
 
